@@ -80,7 +80,8 @@ GRAiNITA Project
 PhD in Particle Physics  
 University of Chinese Academy of Sciences
 
-BSc / MSc in Physics
+BSc in Applied Physics  
+China University of Mining and Technology
 
 ---
 
