@@ -438,6 +438,12 @@ h3 {
   gap: 0.9rem;
 }
 
+.resume-icon-links {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.65rem;
+}
+
 .contact-link {
   display: inline-flex;
   align-items: center;
