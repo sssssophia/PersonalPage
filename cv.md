@@ -2,7 +2,7 @@
 Clermont-Ferrand, France  
 yingrui.hou@outlook.com | Phone available on request  
 LinkedIn: https://www.linkedin.com/in/yingrui-hou  
-GitLab: https://gitlab.com/hyrsophie  
+Personal GitLab: https://gitlab.com/hyrsophie  
 CERN GitLab: https://gitlab.cern.ch/yihou  
 
 ---
