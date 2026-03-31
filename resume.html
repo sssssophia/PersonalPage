@@ -25,12 +25,12 @@
           <p class="resume-location">Clermont-Ferrand, France</p>
         </div>
         <div class="resume-header-actions">
-          <div class="resume-lang-toggle" aria-label="Language switcher">
-            <button class="lang-toggle is-active" type="button" data-lang-btn="en">EN</button>
-            <button class="lang-toggle" type="button" data-lang-btn="fr">FR</button>
-          </div>
           <div class="resume-links">
             <a href="index.html" data-i18n="back_home">Back to Homepage</a>
+          </div>
+          <div class="resume-flag-switcher" aria-label="Language switcher">
+            <button class="lang-flag is-active" type="button" data-lang-btn="en" aria-label="English CV" title="English CV">🇬🇧</button>
+            <button class="lang-flag" type="button" data-lang-btn="fr" aria-label="CV en français" title="CV en français">🇫🇷</button>
           </div>
         </div>
       </header>
@@ -265,13 +265,13 @@
         fr: {
           title: "Yingrui Hou | CV",
           description:
-            "CV de Yingrui Hou, ingénieure en numérique et data scientist titulaire d'un doctorat en physique expérimentale des particules.",
+            "CV de Yingrui Hou, spécialisée en modélisation numérique et data science, titulaire d'un doctorat en physique expérimentale des particules.",
           resume_label: "CV",
           back_home: "Retour à l'accueil",
           summary_1:
-            "Ingénieure en numérique et data scientist, titulaire d'un doctorat en physique expérimentale des particules, spécialisée dans la modélisation, l'estimation d'état et la reconstruction de signaux à partir de systèmes de mesure bruités.",
+            "Spécialiste en modélisation numérique et data science, titulaire d'un doctorat en physique expérimentale des particules, avec une expertise en modélisation, estimation d'état et reconstruction de signaux issus de systèmes de mesure bruités.",
           summary_2:
-            "Expérience dans l'extraction de quantités physiques cachées à l'aide de modèles probabilistes, la gestion de l'incertitude et l'étalonnage de modèles sur des données réelles. Solide expérience en Python/C++, en traitement de données à grande échelle et en méthodes numériques robustes.",
+            "Expérience confirmée dans l'extraction de signaux faibles par modèles probabilistes, la gestion de l'incertitude et la calibration de modèles sur données réelles. Solide maîtrise de Python/C++, du traitement de données à grande échelle et des méthodes numériques robustes.",
           contact_label: "Contact",
           education_label: "Formation",
           edu_phd: "<strong>Doctorat en physique des particules</strong>",
@@ -282,10 +282,10 @@
           skill_2: "Modélisation probabiliste et modèles de mélange",
           skill_3: "Reconstruction de signaux à partir de mesures bruitées",
           skill_4: "Quantification et propagation des incertitudes",
-          skill_5: "Étalonnage de modèles et correction des biais",
-          skill_group_2: "<strong>Data Science &amp; apprentissage automatique</strong>",
-          skill_6: "Arbres boostés (CatBoost / XGBoost)",
-          skill_7: "Ingénierie et sélection de variables",
+          skill_5: "Calibration de modèles et correction des biais",
+          skill_group_2: "<strong>Data Science &amp; machine learning</strong>",
+          skill_6: "Arbres de décision boostés (CatBoost / XGBoost)",
+          skill_7: "Feature engineering et sélection de variables",
           skill_8: "Adaptation de domaine et repondération",
           skill_9: "Modélisation de séries temporelles sous bruit",
           skill_group_3: "<strong>Programmation &amp; ingénierie</strong>",
@@ -296,31 +296,31 @@
           languages_label: "Langues",
           lang_1: "Chinois : langue maternelle",
           lang_2: "Anglais : C1",
-          lang_3: "Français : B1 à B2",
-          highlights_label: "Points techniques clés",
-          highlight_1: "Extraction de signaux faibles à l'aide de modèles de mélange et d'une inférence fondée sur le maximum de vraisemblance",
-          highlight_2: "Modélisation de séries temporelles avec correction de biais et prise en compte des incertitudes",
-          highlight_3: "Adaptation de domaine au moyen d'une repondération par gradient boosting",
+          lang_3: "Français : niveau professionnel intermédiaire (B1-B2)",
+          highlights_label: "Points forts techniques",
+          highlight_1: "Extraction de signaux faibles par modèles de mélange et inférence par maximum de vraisemblance",
+          highlight_2: "Modélisation temporelle avec correction des biais et maîtrise des incertitudes",
+          highlight_3: "Adaptation de domaine par repondération via gradient boosting",
           highlight_4: "Traitement de données à grande échelle et modélisation numérique",
           experience_label: "Expérience professionnelle [Postdoctorat (2021 - 2025)]",
           exp_heading_1: "Data Science - Modélisation numérique et analyse de données",
-          exp_1: "Extraction de signaux faibles à partir de jeux de données très bruités à l'aide de modèles de mélange probabilistes et du maximum de vraisemblance.",
-          exp_2: "Conception de stratégies de sélection de variables pour améliorer le rapport signal sur bruit et la stabilité des paramètres extraits.",
-          exp_3: "Évaluation de la robustesse des modèles à l'aide de métriques de substitution en l'absence de vérité terrain au niveau événementiel.",
+          exp_1: "Extraction de signaux faibles dans des jeux de données très bruités au moyen de modèles de mélange probabilistes et du maximum de vraisemblance.",
+          exp_2: "Conception de stratégies de sélection de variables pour améliorer le rapport signal/bruit et la stabilité des paramètres estimés.",
+          exp_3: "Évaluation de la robustesse des modèles à l'aide d'indicateurs indirects en l'absence de vérité terrain au niveau événement.",
           exp_4: "Modélisation de processus dépendant du temps afin d'inférer des paramètres latents à partir de données temporelles bruitées.",
-          exp_5: "Correction des biais de mesure et des effets de résolution par étalonnage sur simulation et jeux de données de contrôle.",
-          exp_6: "Amélioration de la stabilité des paramètres grâce à une modélisation conjointe sur plusieurs jeux de données.",
-          exp_7: "Correction des écarts de distribution entre simulation et données réelles à l'aide d'une repondération fondée sur le gradient boosting.",
-          exp_8: "Amélioration de la généralisation des modèles et réduction des biais systématiques en situation de dérive de distribution.",
-          exp_9: "Analyses de sensibilité sous variations de modèle, bruit et biais de sélection.",
-          exp_10: "Traitement de jeux de données à grande échelle en C++ et Python et construction de pipelines d'analyse reproductibles.",
-          exp_heading_2: "R&D détecteur - Traitement du signal et modélisation de capteurs",
-          exp_11: "Modélisation de la chaîne complète du signal, de l'entrée physique jusqu'à la mesure reconstruite.",
-          exp_12: "Analyse des corrélations entre variables de mesure pour améliorer la résolution et réduire les biais.",
+          exp_5: "Correction des biais de mesure et des effets de résolution par calibration sur simulation et échantillons de contrôle.",
+          exp_6: "Renforcement de la stabilité des paramètres grâce à une modélisation conjointe sur plusieurs jeux de données.",
+          exp_7: "Correction des écarts de distribution entre simulation et données réelles à l'aide d'une repondération basée sur le gradient boosting.",
+          exp_8: "Amélioration de la généralisation des modèles et réduction des biais systématiques en contexte de dérive de distribution.",
+          exp_9: "Réalisation d'analyses de sensibilité face aux variations de modèle, au bruit et aux biais de sélection.",
+          exp_10: "Traitement de volumes de données importants en C++ et Python et mise en place de pipelines d'analyse reproductibles.",
+          exp_heading_2: "R&D détecteurs - Traitement du signal et modélisation de capteurs",
+          exp_11: "Modélisation de l'ensemble de la chaîne du signal, de l'entrée physique jusqu'à la mesure reconstruite.",
+          exp_12: "Analyse des corrélations entre variables de mesure afin d'améliorer la résolution et de réduire les biais.",
           exp_13: "Développement de méthodes de discrimination des signaux à partir des caractéristiques des formes d'onde.",
-          exp_14: "Étude de corrélations non linéaires dans les systèmes de mesure et application de stratégies de transformation pour améliorer la précision.",
-          exp_15: "Étalonnage des paramètres de modèle à partir de simulations et de données expérimentales.",
-          exp_16: "Réduction des biais et amélioration de la résolution sur différentes configurations système.",
+          exp_14: "Étude de corrélations non linéaires dans les systèmes de mesure et mise en oeuvre de transformations pour améliorer la précision.",
+          exp_15: "Calibration des paramètres de modèle à partir de simulations et de données expérimentales.",
+          exp_16: "Réduction des biais et amélioration de la résolution sur différentes configurations instrumentales.",
           phone_label: "Cliquer pour voir",
         },
       };
