@@ -11,6 +11,7 @@
   --line-strong: rgba(16, 38, 46, 0.16);
   --shadow: 0 14px 40px rgba(24, 33, 37, 0.08);
   --shadow-soft: 0 8px 24px rgba(24, 33, 37, 0.05);
+  --anchor-offset: 7.5rem;
 }
 
 * {
@@ -19,6 +20,17 @@
 
 html {
   scroll-behavior: smooth;
+}
+
+#overview,
+#selected-work,
+#competencies,
+#work-1,
+#work-2,
+#work-3,
+#work-4,
+#work-5 {
+  scroll-margin-top: var(--anchor-offset);
 }
 
 body {
