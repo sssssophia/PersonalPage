@@ -413,6 +413,19 @@ h3 {
   line-height: 1.7;
 }
 
+.case-meta,
+.impact-note {
+  margin: 1rem 0 0;
+  font-size: 0.98rem;
+  line-height: 1.65;
+  color: var(--text);
+}
+
+.case-meta strong,
+.impact-note strong {
+  color: var(--accent-dark);
+}
+
 .case-study li + li {
   margin-top: 0.45rem;
 }

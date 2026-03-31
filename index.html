@@ -79,13 +79,17 @@
             <section class="sidebar-section" id="competencies">
               <p class="sidebar-label">Skills &amp; Tools</p>
               <div class="skill-list">
-                <span class="skill-pill">Probabilistic Modelling</span>
+                <span class="skill-pill">Python</span>
                 <span class="skill-pill">Machine Learning</span>
+                <span class="skill-pill">Gradient Boosted Trees</span>
+                <span class="skill-pill">Probabilistic Modelling</span>
+                <span class="skill-pill">Maximum Likelihood Estimation</span>
                 <span class="skill-pill">Time-Series Analysis</span>
                 <span class="skill-pill">Bias Correction</span>
                 <span class="skill-pill">Calibration</span>
                 <span class="skill-pill">Signal Processing</span>
                 <span class="skill-pill">Domain Adaptation</span>
+                <span class="skill-pill">Statistical Inference</span>
                 <span class="skill-pill">Large-Scale Data Analysis</span>
               </div>
             </section>
@@ -149,11 +153,18 @@
                 Identified meaningful signals in datasets dominated by background noise,
                 even without per-event ground truth.
               </p>
+              <p class="case-meta">
+                <strong>Methods:</strong> mixture models, likelihood fitting, feature selection
+              </p>
               <ul>
                 <li>Built probabilistic mixture models with signal and background components.</li>
                 <li>Used maximum likelihood estimation and feature-based selection strategies.</li>
                 <li>Validated with proxy metrics such as signal yield, width, and dataset stability.</li>
               </ul>
+              <p class="impact-note">
+                <strong>Impact:</strong> improved reliability of weak-signal detection under low
+                signal-to-noise conditions.
+              </p>
               <p class="impact">
                 Industry relevance: fraud detection, anomaly detection, weak supervision.
               </p>
@@ -168,11 +179,18 @@
                 Inferred latent dynamics from noisy temporal data affected by measurement
                 resolution and selection bias.
               </p>
+              <p class="case-meta">
+                <strong>Methods:</strong> time-dependent modelling, calibration, joint fitting
+              </p>
               <ul>
                 <li>Built time-dependent probabilistic models across multiple datasets.</li>
                 <li>Corrected for resolution effects, acceptance bias, and noise dilution.</li>
                 <li>Used calibration samples and control datasets to reduce systematic error.</li>
               </ul>
+              <p class="impact-note">
+                <strong>Impact:</strong> increased parameter stability and reduced systematic
+                uncertainty across datasets.
+              </p>
               <p class="impact">
                 Industry relevance: retention modelling, churn analysis, causal inference.
               </p>
@@ -187,11 +205,18 @@
                 Improved model robustness when training and real-world data did not follow
                 the same distribution.
               </p>
+              <p class="case-meta">
+                <strong>Methods:</strong> GBDT, reweighting, feature-distribution validation
+              </p>
               <ul>
                 <li>Trained Gradient Boosted Decision Trees and compared feature distributions.</li>
                 <li>Applied gradient-boosting-based reweighting before retraining.</li>
                 <li>Validated alignment at the feature level to improve downstream generalisation.</li>
               </ul>
+              <p class="impact-note">
+                <strong>Impact:</strong> reduced dataset mismatch and improved downstream model
+                generalisation.
+              </p>
               <p class="impact">
                 Industry relevance: domain adaptation, production ML, dataset shift handling.
               </p>
@@ -206,11 +231,18 @@
                 Converted raw sensor signals into more accurate measurements while
                 separating different signal types.
               </p>
+              <p class="case-meta">
+                <strong>Methods:</strong> waveform analysis, pulse-shape discrimination, statistical reconstruction
+              </p>
               <ul>
                 <li>Modelled the signal chain from energy deposition to electronic readout.</li>
                 <li>Analysed waveform structure and extracted discriminative pulse-shape features.</li>
                 <li>Improved resolution and classification through statistical signal modelling.</li>
               </ul>
+              <p class="impact-note">
+                <strong>Impact:</strong> improved measurement resolution and signal-type
+                discrimination for complex sensor data.
+              </p>
               <p class="impact">
                 Industry relevance: sensor analytics, signal processing, IoT, embedded systems.
               </p>
@@ -225,11 +257,18 @@
                 Reduced bias and non-linearity in measurement systems through iterative
                 calibration and parameter tuning.
               </p>
+              <p class="case-meta">
+                <strong>Methods:</strong> correlation analysis, calibration loops, simulation comparison
+              </p>
               <ul>
                 <li>Analysed variable correlations and system response behaviour.</li>
                 <li>Applied transformations, calibration strategies, and simulation comparisons.</li>
                 <li>Improved measurement accuracy through repeated refinement loops.</li>
               </ul>
+              <p class="impact-note">
+                <strong>Impact:</strong> reduced system bias and improved accuracy in non-linear
+                measurement settings.
+              </p>
               <p class="impact">
                 Industry relevance: system calibration, digital twins, engineering optimisation.
               </p>
