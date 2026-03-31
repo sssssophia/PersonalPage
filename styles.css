@@ -125,6 +125,11 @@ body::before {
   background: rgba(255, 251, 245, 0.95);
 }
 
+.name-audio-button.is-playing {
+  border-color: rgba(186, 100, 57, 0.28);
+  background: rgba(255, 244, 236, 0.96);
+}
+
 .name-audio-button:disabled {
   opacity: 0.45;
   cursor: not-allowed;

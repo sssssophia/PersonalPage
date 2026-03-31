@@ -34,6 +34,9 @@
                 <path d="M4 9.5A1.5 1.5 0 0 1 5.5 8H9l4.18-3.35A1 1 0 0 1 14.8 5.43v13.14a1 1 0 0 1-1.62.78L9 16H5.5A1.5 1.5 0 0 1 4 14.5Zm12.73-2.52a.75.75 0 0 1 1.04.2 8.1 8.1 0 0 1 0 9.64.75.75 0 1 1-1.24-.84 6.6 6.6 0 0 0 0-7.96.75.75 0 0 1 .2-1.04m2.57-2.44a.75.75 0 0 1 1.05.14 12.21 12.21 0 0 1 0 14.64.75.75 0 1 1-1.19-.92 10.71 10.71 0 0 0 0-12.8.75.75 0 0 1 .14-1.06" />
               </svg>
             </button>
+            <audio id="name-audio" preload="metadata">
+              <source src="assets/audio/yingrui-hou-pronunciation.mp3" type="audio/mpeg" />
+            </audio>
           </div>
           <p class="resume-location">Clermont-Ferrand, France</p>
         </div>
@@ -341,6 +344,7 @@
       const descriptionMeta = document.querySelector('meta[name="description"]');
       const langButtons = document.querySelectorAll("[data-lang-btn]");
       const nameAudioButton = document.getElementById("name-audio-button");
+      const nameAudio = document.getElementById("name-audio");
 
       function applyResumeLanguage(lang) {
         const copy = translations[lang];
@@ -390,33 +394,39 @@
         });
       });
 
-      if (nameAudioButton) {
-        const synth = window.speechSynthesis;
+      if (nameAudioButton && nameAudio) {
+        const setNameAudioState = (isPlaying) => {
+          nameAudioButton.classList.toggle("is-playing", isPlaying);
+        };
 
-        if (!synth) {
-          nameAudioButton.disabled = true;
-          nameAudioButton.title = "Audio playback is not supported in this browser";
-        } else {
-          nameAudioButton.addEventListener("click", () => {
-            synth.cancel();
+        nameAudio.addEventListener("play", () => {
+          setNameAudioState(true);
+        });
 
-            const voices = synth.getVoices();
-            const preferredVoice =
-              voices.find((voice) => /zh/i.test(voice.lang)) ||
-              voices.find((voice) => /en/i.test(voice.lang)) ||
-              null;
+        nameAudio.addEventListener("pause", () => {
+          setNameAudioState(false);
+        });
 
-            const utterance = new SpeechSynthesisUtterance("Yingrui Hou");
-            utterance.lang = preferredVoice ? preferredVoice.lang : "en-US";
-            utterance.rate = 0.92;
-            utterance.pitch = 1;
-            if (preferredVoice) {
-              utterance.voice = preferredVoice;
-            }
+        nameAudio.addEventListener("ended", () => {
+          setNameAudioState(false);
+        });
 
-            synth.speak(utterance);
-          });
-        }
+        nameAudioButton.addEventListener("click", async () => {
+          if (!nameAudio.paused) {
+            nameAudio.pause();
+            nameAudio.currentTime = 0;
+            return;
+          }
+
+          nameAudio.currentTime = 0;
+
+          try {
+            await nameAudio.play();
+          } catch (error) {
+            nameAudioButton.disabled = true;
+            nameAudioButton.title = "Audio playback is blocked in this browser";
+          }
+        });
       }
 
       applyResumeLanguage(window.localStorage.getItem("resume-lang") || "en");
