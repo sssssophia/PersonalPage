@@ -649,6 +649,10 @@ h3 {
   padding-left: 1.25rem;
 }
 
+.toc-panel .sidebar-label {
+  margin-top: 1.1rem;
+}
+
 .toc-list li + li {
   margin-top: 0.9rem;
 }
