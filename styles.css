@@ -843,26 +843,12 @@ h3 {
   display: inline-flex;
   align-items: center;
   margin-top: 1.25rem;
-  min-height: 40px;
-  padding: 0.65rem 0.95rem;
-  border: 1px solid var(--line);
-  border-radius: 999px;
-  background: rgba(252, 248, 241, 0.92);
-  font-size: 0.95rem;
-  font-weight: 700;
+  text-decoration: none;
 }
 
-.site-counter a,
-.site-counter span,
-.site-counter {
-  color: var(--accent-dark) !important;
-  text-decoration: none !important;
-}
-
-.site-counter svg,
-.site-counter ion-icon {
-  color: var(--accent-dark) !important;
-  fill: var(--accent-dark) !important;
+.site-counter img {
+  display: block;
+  height: 28px;
 }
 
 .counterapi-invisible {
