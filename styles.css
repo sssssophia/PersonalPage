@@ -152,6 +152,7 @@ body::before {
   align-items: center;
   gap: 0.9rem;
   min-width: 0;
+  flex-wrap: nowrap;
 }
 
 .brand,
@@ -165,6 +166,7 @@ body::before {
   color: var(--text);
   letter-spacing: 0.08em;
   text-transform: uppercase;
+  flex-shrink: 0;
 }
 
 .nav-links {
@@ -331,6 +333,7 @@ h3 {
 
 .topbar-links {
   gap: 0.45rem;
+  flex-wrap: nowrap;
 }
 
 .topbar-links .icon-link {
@@ -492,10 +495,6 @@ h3 {
   box-shadow: var(--shadow-soft);
 }
 
-.section {
-  padding: 3rem 0 0;
-}
-
 .resume-stack p,
 .resume-stack a {
   margin: 0;
@@ -633,22 +632,10 @@ h3 {
   line-height: 1.7;
 }
 
-.intro {
-  padding: 1.6rem 1.7rem;
-  border: 1px solid var(--line-strong);
-  border-radius: 24px;
-  background: var(--surface);
-  box-shadow: var(--shadow-soft);
-  display: grid;
-  grid-template-columns: 1fr;
-  gap: 2rem;
-  align-items: start;
-}
-
 .section-heading {
   display: grid;
   gap: 0.75rem;
-  margin-bottom: 1.5rem;
+  margin-bottom: 1.15rem;
 }
 
 .case-study-grid {
@@ -787,9 +774,16 @@ h3 {
   background: rgba(255, 255, 255, 0.84);
 }
 
+main {
+  padding-top: 1.15rem;
+}
+
+.section {
+  padding: 1.6rem 0 0;
+}
+
 @media (max-width: 960px) {
   .case-study-grid,
-  .intro,
   .hero-layout,
   .resume-grid {
     grid-template-columns: 1fr;
@@ -801,8 +795,8 @@ h3 {
   }
 
   .topbar-identity {
-    align-items: flex-start;
-    flex-direction: column;
+    width: 100%;
+    justify-content: space-between;
   }
 
   .hero {
@@ -825,6 +819,10 @@ h3 {
     padding-bottom: 2.5rem;
   }
 
+  .topbar-links {
+    flex-wrap: wrap;
+  }
+
   .button,
   .nav-links a {
     width: 100%;
@@ -841,8 +839,4 @@ h3 {
     border-radius: 20px;
   }
 
-  .intro {
-    padding: 1.35rem;
-    border-radius: 20px;
-  }
 }
