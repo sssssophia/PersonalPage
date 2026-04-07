@@ -1,7 +1,7 @@
 ---
 eyebrow: Personal Introduction
-title: From raw data to physic-reliable decisions
-about: PhD and former postdoctoral researcher focused on modelling, uncertainty, and translating complex data into decisions teams can trust.
+title: From measurements to physic-reliable decisions
+about: PhD and former postdoctoral researcher focused on modelling, uncertainty, and translating complex data into trustable decisions.
 ---
 I've worked on extracting reliable signals and physical observables from complex detector systems, understanding and correcting bias, and validating models when direct ground truth is limited or unavailable.
 

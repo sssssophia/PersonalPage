@@ -373,8 +373,9 @@ h1 {
 
 .profile-panel h1 {
   max-width: none;
-  white-space: normal;
-  text-wrap: balance;
+  font-size: clamp(1.95rem, 2.2vw, 2.45rem);
+  white-space: nowrap;
+  text-wrap: pretty;
 }
 
 .toc-panel h2 {
@@ -468,6 +469,11 @@ h3 {
   line-height: 1.72;
   color: var(--text);
   text-wrap: pretty;
+}
+
+.sidebar-copy p strong {
+  color: var(--accent-dark);
+  font-weight: 600;
 }
 
 .icon-links {
