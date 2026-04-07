@@ -262,6 +262,12 @@ def build_index(profile: dict) -> str:
       <header class="hero">
         <div class="hero-layout" id="top">
           <section class="profile-panel">
+            <div class="closing-panel profile-positioning">
+              <p class="eyebrow">{escape(positioning["attributes"].get("eyebrow", "Positioning"))}</p>
+              <h2>{escape(positioning["attributes"].get("title", ""))}</h2>
+              {render_markdown(positioning["body"])}
+            </div>
+
             <p class="eyebrow">{escape(intro["attributes"].get("eyebrow", "Personal Introduction"))}</p>
             <h1>{escape(intro["attributes"].get("title", ""))}</h1>
             <p class="hero-about">{escape(intro["attributes"].get("about", ""))}</p>
@@ -296,19 +302,10 @@ def build_index(profile: dict) -> str:
         <section class="section" id="selected-work">
           <div class="section-heading">
             <p class="eyebrow">Selected Work</p>
-            <h2>Selected work</h2>
           </div>
 
           <div class="case-study-grid">
             {work_cards}
-          </div>
-        </section>
-
-        <section class="section closing">
-          <div class="closing-panel">
-            <p class="eyebrow">{escape(positioning["attributes"].get("eyebrow", "Positioning"))}</p>
-            <h2>{escape(positioning["attributes"].get("title", ""))}</h2>
-            {render_markdown(positioning["body"])}
           </div>
         </section>
       </main>
