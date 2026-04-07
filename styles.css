@@ -1028,6 +1028,11 @@ h3 {
   text-wrap: pretty;
 }
 
+.profile-positioning p strong {
+  color: #7a5848;
+  font-weight: 600;
+}
+
 @media (max-width: 1100px) {
   .profile-positioning h2 {
     white-space: normal;
