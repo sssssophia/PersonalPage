@@ -378,6 +378,7 @@ h1 {
 }
 
 .toc-panel h2 {
+  font-size: clamp(2rem, 2.6vw, 2.75rem);
   text-wrap: pretty;
 }
 
