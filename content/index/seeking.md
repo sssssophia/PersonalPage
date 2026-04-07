@@ -1,1 +1,1 @@
-Numerical engineering, data science, and modelling roles involving noisy measurement systems, uncertainty, and large-scale data analysis.
+Seeking data science, modelling, and machine learning roles focused on noisy data, uncertainty, and real-world decision systems.

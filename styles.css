@@ -405,6 +405,7 @@ h3 {
 .hero-copy {
   max-width: 65ch;
   margin: 0.8rem 0 0;
+  text-wrap: pretty;
 }
 
 .hero-copy p,
@@ -447,9 +448,11 @@ h3 {
 
 .sidebar-copy {
   margin: 0;
+  max-width: 58ch;
   font-size: 0.98rem;
   line-height: 1.68;
   color: var(--text);
+  text-wrap: pretty;
 }
 
 .icon-links {
