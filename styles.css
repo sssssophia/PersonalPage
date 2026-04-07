@@ -72,7 +72,7 @@ body::before {
 
 .hero {
   position: relative;
-  padding: 0;
+  padding-top: 0.35rem;
 }
 
 .resume-header {
