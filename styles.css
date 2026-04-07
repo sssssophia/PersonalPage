@@ -974,12 +974,12 @@ h3 {
 
 .profile-positioning {
   margin-bottom: 1.75rem;
-  padding: 2.95rem 3rem 2.7rem;
+  padding: 2.7rem 3rem 2.45rem;
   border-left: 0;
   background:
-    linear-gradient(135deg, rgba(255, 247, 239, 0.98), rgba(255, 252, 248, 0.9));
+    linear-gradient(135deg, rgba(255, 249, 243, 0.98), rgba(255, 252, 248, 0.92));
   box-shadow:
-    0 12px 28px rgba(24, 33, 37, 0.06),
+    0 10px 24px rgba(24, 33, 37, 0.05),
     inset 0 1px 0 rgba(255, 255, 255, 0.55);
 }
 
@@ -995,7 +995,7 @@ h3 {
   display: inline-flex;
   align-items: center;
   min-height: 32px;
-  margin-bottom: 1.1rem;
+  margin-bottom: 1rem;
   padding: 0.2rem 0.8rem;
   border: 1px solid rgba(186, 100, 57, 0.14);
   border-radius: 999px;
@@ -1004,20 +1004,22 @@ h3 {
 }
 
 .profile-positioning h2 {
-  max-width: 15ch;
+  max-width: 18ch;
   color: #142a32;
-  font-size: clamp(2.35rem, 3.4vw, 3.55rem);
-  line-height: 0.98;
-  letter-spacing: -0.05em;
+  font-size: clamp(2.05rem, 2.45vw, 2.7rem);
+  line-height: 1.02;
+  letter-spacing: -0.04em;
   text-wrap: balance;
 }
 
 .profile-positioning p {
   max-width: 58ch;
-  margin: 1.25rem 0 0;
-  color: #284049;
-  font-size: 1.04rem;
-  line-height: 1.78;
+  margin: 1rem 0 0;
+  padding-top: 1rem;
+  border-top: 1px solid rgba(16, 38, 46, 0.08);
+  color: #314850;
+  font-size: 1rem;
+  line-height: 1.76;
   text-wrap: pretty;
 }
 
