@@ -1,1 +1,1 @@
-Data science, modelling, and machine learning roles focused on noisy data, uncertainty, and real-world decision systems.
+Open to Data Scientist, Machine Learning Engineer, and Modelling roles where statistical rigour, uncertainty handling, and messy real-world data are central to the work.
