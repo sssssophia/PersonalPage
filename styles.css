@@ -25,11 +25,7 @@ html {
 #overview,
 #selected-work,
 #competencies,
-#work-1,
-#work-2,
-#work-3,
-#work-4,
-#work-5 {
+[id^="work-"] {
   scroll-margin-top: var(--anchor-offset);
 }
 
@@ -936,6 +932,26 @@ h3 {
 
 .case-study li + li {
   margin-top: 0.45rem;
+}
+
+.markdown-figure {
+  margin: 1.2rem 0 0;
+}
+
+.markdown-image {
+  display: block;
+  width: 100%;
+  height: auto;
+  border: 1px solid var(--line);
+  border-radius: 18px;
+  background: rgba(255, 255, 255, 0.72);
+}
+
+.markdown-figure figcaption {
+  margin-top: 0.65rem;
+  color: var(--text-muted);
+  font-size: 0.9rem;
+  line-height: 1.55;
 }
 
 .case-evidence {

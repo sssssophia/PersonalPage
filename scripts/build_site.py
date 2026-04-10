@@ -18,6 +18,22 @@ ICON_PATHS = {
     "gitlab": 'm12 18.9 2.94-9.04H9.06Zm0 0-9.12-6.63 2.55-7.85a.46.46 0 0 1 .87 0l2.76 8.48Zm0 0 9.12-6.63-2.55-7.85a.46.46 0 0 0-.87 0l-2.76 8.48Z',
 }
 
+RESUME_SKILLS_FR = {
+    "Physics (classical/quantum)": "Physique (classique / quantique)",
+    "Python": "Python",
+    "C/C++": "C/C++",
+    "Machine Learning": "Machine learning",
+    "Probabilistic Modelling": "Modélisation probabiliste",
+    "Maximum Likelihood Estimation": "Estimation par maximum de vraisemblance",
+    "Time-Series Analysis": "Analyse de séries temporelles",
+    "Bias Correction": "Correction des biais",
+    "Calibration": "Calibration",
+    "Signal Processing": "Traitement du signal",
+    "Domain Adaptation": "Adaptation de domaine",
+    "Statistical Inference": "Inférence statistique",
+    "Large-Scale Data Analysis": "Analyse de données à grande échelle",
+}
+
 
 def parse_module(path: Path) -> dict:
     raw = path.read_text(encoding="utf-8").replace("\r\n", "\n").strip()
@@ -77,6 +93,23 @@ def render_markdown(markdown: str) -> str:
             index += 1
             continue
 
+        image_match = re.match(r'^!\[([^\]]*)\]\((\S+?)(?:\s+"([^"]+)")?\)$', line)
+        if image_match:
+            alt_text = image_match.group(1)
+            image_path = image_match.group(2)
+            caption = image_match.group(3)
+            figure = (
+                f'<figure class="markdown-figure">'
+                f'<img class="markdown-image" src="{escape(image_path, quote=True)}" '
+                f'alt="{escape(alt_text, quote=True)}" loading="lazy" />'
+            )
+            if caption:
+                figure += f'<figcaption>{escape(caption)}</figcaption>'
+            figure += "</figure>"
+            blocks.append(figure)
+            index += 1
+            continue
+
         heading_match = re.match(r"^(#{1,3})\s+(.+)$", line)
         if heading_match:
             level = len(heading_match.group(1))
@@ -133,6 +166,15 @@ def slugify(text: str) -> str:
 
 def parse_bullets(markdown: str) -> list[str]:
     return [line.strip()[2:] for line in markdown.split("\n") if line.strip().startswith("- ")]
+
+
+def render_bullet_markdown(items: list[str]) -> str:
+    return render_markdown("\n".join(f"- {item}" for item in items))
+
+
+def work_sort_key(path: Path) -> tuple[int, str]:
+    match = re.search(r"work-(\d+)$", path.stem)
+    return (int(match.group(1)) if match else 10**9, path.stem)
 
 
 def icon_link(href: str, aria_label: str, title: str, icon: str, class_name: str, label: str = "") -> str:
@@ -222,14 +264,15 @@ def build_index(profile: dict) -> str:
     skills = parse_module(CONTENT / "index/skills.md")
     overview = parse_module(CONTENT / "index/overview.md")
     positioning = parse_module(CONTENT / "index/positioning.md")
-    works = [parse_module(CONTENT / f"index/work-{i}.md") for i in range(1, 6)]
+    works = [parse_module(path) for path in sorted((CONTENT / "index").glob("work-*.md"), key=work_sort_key)]
+    visible_works = [work for work in works if str(work["attributes"].get("homepage", "true")).lower() != "false"]
 
     skill_pills = "".join(f'<span class="skill-pill">{escape(item)}</span>' for item in parse_bullets(skills["body"]))
     work_map = "".join(
         f'<li><a href="#work-{index + 1}">{escape(work["attributes"]["title"])}</a></li>'
-        for index, work in enumerate(works)
+        for index, work in enumerate(visible_works)
     )
-    work_cards = "\n".join(render_case_study(work, index) for index, work in enumerate(works))
+    work_cards = "\n".join(render_case_study(work, index) for index, work in enumerate(visible_works))
 
     return f"""<!DOCTYPE html>
 <html lang="en">
@@ -322,6 +365,7 @@ def build_index(profile: dict) -> str:
 
 
 def build_resume(profile: dict) -> str:
+    shared_skills = parse_bullets(parse_module(CONTENT / "index/skills.md")["body"])
     shell = {
         lang: parse_module(CONTENT / f"resume/{lang}/shell.md")["attributes"]
         for lang in ("en", "fr")
@@ -329,7 +373,7 @@ def build_resume(profile: dict) -> str:
     sections = {
         lang: {
             name: parse_module(CONTENT / f"resume/{lang}/{name}.md")
-            for name in ("summary", "education", "skills", "languages", "highlights", "experience")
+            for name in ("summary", "education", "languages", "highlights", "experience")
         }
         for lang in ("en", "fr")
     }
@@ -350,7 +394,9 @@ def build_resume(profile: dict) -> str:
             "summary_html": render_markdown(sections[lang]["summary"]["body"]),
             "contact_html": render_resume_contact(profile, shell[lang]["phone_label"]),
             "education_html": render_markdown(sections[lang]["education"]["body"]),
-            "skills_html": render_markdown(sections[lang]["skills"]["body"]),
+            "skills_html": render_bullet_markdown(
+                shared_skills if lang == "en" else [RESUME_SKILLS_FR.get(item, item) for item in shared_skills]
+            ),
             "languages_html": render_markdown(sections[lang]["languages"]["body"]),
             "highlights_html": render_markdown(sections[lang]["highlights"]["body"]),
             "experience_html": render_markdown(sections[lang]["experience"]["body"]),

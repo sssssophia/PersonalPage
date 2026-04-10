@@ -62,10 +62,10 @@
           <aside class="toc-panel" id="overview" aria-label="Overview and selected work index">
             <p class="eyebrow">Overview</p>
             <h2>How can my research experiences help in industry?</h2>
-            <div class="toc-copy"><p>Across these projects, the recurring pattern is consistent: design and operate the measurement system for certain observables, infer what matters when observations are imperfect, assumptions are fragile, and validation must be earned. That is the same pattern behind industry R&amp;D and production data science in fraud, forecasting, lifecycle analytics, signal processing, and decision systems.</p></div>
+            <div class="toc-copy"><p>Across these projects, the recurring pattern is consistent: design and operate the measurement system for certain observables, infer what matters when observations are imperfect, assumptions are fragile, and validation must be earned. That is the same pattern behind industry R&amp;D and production data science in forecasting, lifecycle analytics, signal processing, and decision systems.</p></div>
             <p class="sidebar-label">Selected Works</p>
             <ol class="toc-list">
-              <li><a href="#work-1">Weak Signal Extraction in Noisy Data</a></li><li><a href="#work-2">Time-Series Modelling with Bias Correction</a></li><li><a href="#work-3">Machine Learning under Distribution Shift</a></li><li><a href="#work-4">Sensor Signal Modelling and Reconstruction</a></li><li><a href="#work-5">Model Calibration and System Optimisation</a></li>
+              <li><a href="#work-1">Weak-Signal Inference</a></li><li><a href="#work-2">Time-Series Inference</a></li><li><a href="#work-3">Domain Adaptation for ML</a></li><li><a href="#work-4">Sensor Reconstruction</a></li><li><a href="#work-5">Calibration &amp; Response Optimisation</a></li><li><a href="#work-6">Data Quality Monitoring</a></li><li><a href="#work-7">Simulation Correction Tooling</a></li><li><a href="#work-8">Fourier-Based Inference for Complex Signals</a></li>
             </ol>
           </aside>
         </div>
@@ -81,76 +81,121 @@
             <article class="case-study" id="work-1">
   <div class="case-study-header">
     <p class="case-number">01</p>
-    <h3>Weak Signal Extraction in Noisy Data</h3>
+    <h3>Weak-Signal Inference</h3>
   </div>
   <div class="case-tags" aria-label="Skills and tools used"><span class="case-tag">Mixture Models</span><span class="case-tag">Maximum Likelihood</span><span class="case-tag">Feature Selection</span><span class="case-tag">Statistical Validation</span></div>
-  <p>Identified meaningful signals in datasets dominated by background noise, even without per-event ground truth.</p><ul><li>Built probabilistic mixture models with signal and background components.</li><li>Used maximum likelihood estimation and feature-based selection strategies.</li><li>Validated with proxy metrics such as signal yield, width, and dataset stability.</li></ul>
-  <p class="case-meta"><strong>Methods:</strong> mixture models, likelihood fitting, feature selection</p>
-  <p class="impact-note"><strong>Impact:</strong> improved reliability of weak-signal detection under low signal-to-noise conditions.</p>
-  <p class="impact">Industry relevance: fraud detection, anomaly detection, weak supervision.</p>
+  <p>Built a weak-signal inference workflow for data where event-level truth is unavailable and background dominates the observable space.</p><ul><li>Built signal-plus-background likelihood fits to separate rare signal from combinatorial background.</li><li>Validated the extraction strategy against a higher-yield control decay rather than relying on one fit in isolation.</li><li>Monitored yield, width, and fit stability across runs and selections to test robustness under changing conditions.</li></ul>
+  <p class="case-meta"><strong>Methods:</strong> mass fitting, control-channel validation, proxy-metric checks</p>
+  <p class="impact-note"><strong>Impact:</strong> validated rare-signal extraction in low signal-to-noise data with control measurements and stability checks.</p>
+  <p class="impact">Industry relevance: Fraud Detection | Anomaly Detection | Weakly Supervised Learning</p>
   <div class="case-evidence">
   <p class="case-evidence-title">Selected evidence from project work</p>
-  <ul class="case-evidence-list"><li>A 2022 mass fit produced a narrow peak near 1019 MeV with about 1.9k signal candidates over a smooth background component.</li><li>Signal yield, fitted width, and stability across selections were used as proxy quality metrics when event-level truth was unavailable.</li></ul>
+  <ul class="case-evidence-list"><li>In the radiative-decay note, the mass-fit strategy was important enough to be validated through a dedicated branching-ratio measurement, not treated as a black box.</li><li>The Run 2 sample was expected to give about five times the signal yield of Run 1, so consistency across years was a practical validation target as well as a statistical advantage.</li></ul>
 </div>
 </article>
 <article class="case-study" id="work-2">
   <div class="case-study-header">
     <p class="case-number">02</p>
-    <h3>Time-Series Modelling with Bias Correction</h3>
+    <h3>Time-Series Inference</h3>
   </div>
   <div class="case-tags" aria-label="Skills and tools used"><span class="case-tag">Time-Series Modelling</span><span class="case-tag">Bias Correction</span><span class="case-tag">Calibration</span><span class="case-tag">Joint Fitting</span></div>
-  <p>Inferred latent dynamics from noisy temporal data affected by measurement resolution and selection bias.</p><ul><li>Built time-dependent probabilistic models across multiple datasets.</li><li>Corrected for resolution effects, acceptance bias, and noise dilution.</li><li>Used calibration samples and control datasets to reduce systematic error.</li></ul>
-  <p class="case-meta"><strong>Methods:</strong> time-dependent modelling, calibration, joint fitting</p>
-  <p class="impact-note"><strong>Impact:</strong> increased parameter stability and reduced systematic uncertainty across datasets.</p>
-  <p class="impact">Industry relevance: retention modelling, churn analysis, causal inference.</p>
+  <p>Built a time-series inference workflow for data affected by selection effects, detector resolution, and sample mismatch.</p><ul><li>Modelled acceptance and resolution explicitly instead of absorbing reconstruction effects into a single nuisance term.</li><li>Estimated Run 1 and Run 2 corrections separately to avoid over-sharing assumptions across datasets.</li><li>Calibrated the effective time resolution with control samples and propagated residual mismodelling as systematic uncertainty.</li></ul>
+  <p class="case-meta"><strong>Methods:</strong> decay-time acceptance modelling, resolution calibration, simultaneous fitting</p>
+  <p class="impact-note"><strong>Impact:</strong> improved time-dependent inference by separating acceptance, resolution, and calibration effects across datasets.</p>
+  <p class="impact">Industry relevance: Retention Analytics | Churn Modelling | Causal Inference</p>
   <div class="case-evidence">
   <p class="case-evidence-title">Selected evidence from project work</p>
-  <ul class="case-evidence-list"><li>Run 1 and Run 2 proper-time acceptance curves were modelled separately rather than assuming a single shared temporal response.</li><li>Control-channel data, MC acceptance ratios, and GB-reweighting were combined to reduce bias in time-dependent inference.</li></ul>
+  <ul class="case-evidence-list"><li>The note states that signal and control samples were matched by GB reweighting before building the acceptance correction, rather than assuming raw MC agreement.</li><li>Acceptance extraction combined <code>B0</code> data, <code>B0/Bs0</code> MC ratios, and a simultaneous fit; Run 1 and Run 2 were treated separately to avoid over-sharing detector response assumptions.</li></ul>
 </div>
 </article>
 <article class="case-study" id="work-3">
   <div class="case-study-header">
     <p class="case-number">03</p>
-    <h3>Machine Learning under Distribution Shift</h3>
+    <h3>Domain Adaptation for ML</h3>
   </div>
   <div class="case-tags" aria-label="Skills and tools used"><span class="case-tag">GBDT</span><span class="case-tag">XGBoost</span><span class="case-tag">Reweighting</span><span class="case-tag">Feature Validation</span></div>
-  <p>Improved model robustness when training and real-world data did not follow the same distribution.</p><ul><li>Trained Gradient Boosted Decision Trees and compared feature distributions.</li><li>Applied gradient-boosting-based reweighting before retraining.</li><li>Validated alignment at the feature level to improve downstream generalisation.</li></ul>
-  <p class="case-meta"><strong>Methods:</strong> GBDT, reweighting, feature-distribution validation</p>
-  <p class="impact-note"><strong>Impact:</strong> reduced dataset mismatch and improved downstream model generalisation.</p>
-  <p class="impact">Industry relevance: domain adaptation, production ML, dataset shift handling.</p>
+  <p>Improved model robustness under distribution shift by validating score behaviour and reweighting samples before downstream use.</p><ul><li>Used train-test BDT score comparisons to check separation quality and overtraining behaviour.</li><li>Reweighted calibration and control samples so their kinematics better matched the target signal sample.</li><li>Treated reweighting as part of the validation loop whenever downstream inference depended on sample agreement.</li></ul>
+  <p class="case-meta"><strong>Methods:</strong> BDT validation, gradient-boosting reweighting, calibration-sample alignment</p>
+  <p class="impact-note"><strong>Impact:</strong> reduced kinematic mismatch between calibration and signal-like samples before downstream modelling and selection.</p>
+  <p class="impact">Industry relevance: Domain Adaptation | Production ML | Dataset Shift</p>
   <div class="case-evidence">
   <p class="case-evidence-title">Selected evidence from project work</p>
-  <ul class="case-evidence-list"><li>Train/test BDT response comparisons were used to verify score separation before downstream threshold tuning.</li><li>Reweighting was treated as part of the validation loop whenever calibration and signal-like samples differed in kinematics.</li></ul>
+  <ul class="case-evidence-list"><li>The <code>Run2_Bs2PhiGamma_TestTrain.pdf</code> plot explicitly compares signal/background train and test BDT responses, providing a direct diagnostic of model behaviour before threshold optimisation.</li><li>In the time-dependent note, calibration decays in both data and simulation were reweighted with a GBR so observables such as <code>pT(B)</code> and <code>eta(B)</code> matched the signal channel more closely.</li></ul>
 </div>
 </article>
 <article class="case-study" id="work-4">
   <div class="case-study-header">
     <p class="case-number">04</p>
-    <h3>Sensor Signal Modelling and Reconstruction</h3>
+    <h3>Sensor Reconstruction</h3>
   </div>
   <div class="case-tags" aria-label="Skills and tools used"><span class="case-tag">Signal Processing</span><span class="case-tag">Waveform Analysis</span><span class="case-tag">Pulse Shape Discrimination</span><span class="case-tag">Statistical Reconstruction</span></div>
-  <p>Converted raw sensor signals into more accurate measurements while separating different signal types.</p><ul><li>Modelled the signal chain from energy deposition to electronic readout.</li><li>Analysed waveform structure and extracted discriminative pulse-shape features.</li><li>Improved resolution and classification through statistical signal modelling.</li></ul>
-  <p class="case-meta"><strong>Methods:</strong> waveform analysis, pulse-shape discrimination, statistical reconstruction</p>
-  <p class="impact-note"><strong>Impact:</strong> improved measurement resolution and signal-type discrimination for complex sensor data.</p>
-  <p class="impact">Industry relevance: sensor analytics, signal processing, IoT, embedded systems.</p>
+  <p>Connected beam-test measurements and detector simulation to a quantitative reconstruction model for non-uniform sensor response.</p><ul><li>Combined beam-test measurements, track reconstruction, and Geant4 simulation to estimate effective detected energy.</li><li>Used spatial light-collection efficiency maps instead of assuming uniform detector response.</li><li>Quantified how non-uniform response contributes to energy-resolution performance across a broad energy range.</li></ul>
+  <p class="case-meta"><strong>Methods:</strong> beam-test analysis, Geant4 shower simulation, effective-energy reconstruction</p>
+  <p class="impact-note"><strong>Impact:</strong> connected measured detector non-uniformities to reconstructed-energy performance and design understanding.</p>
+  <p class="impact">Industry relevance: Sensor Analytics | Signal Processing | Embedded Systems</p>
   <div class="case-evidence">
   <p class="case-evidence-title">Selected evidence from project work</p>
-  <ul class="case-evidence-list"><li>Beam-test efficiency maps and Geant4 shower simulations were combined to study how non-uniform light collection affects reconstructed energy.</li><li>Energy resolution was fitted from 1 to 34 GeV, with a baseline constant term reported at about 0.63% for the beam-test map.</li></ul>
+  <ul class="case-evidence-list"><li>The June 2024 test-beam note explicitly combines measured light-detection efficiency maps with Geant4 energy-deposition distributions to compute effective detected energy event by event.</li><li>Simulations from 1 GeV to 34 GeV were used to fit the energy-resolution curve; the reported constant term for the beam-test map was on the order of <code>0.63%</code>.</li></ul>
 </div>
 </article>
 <article class="case-study" id="work-5">
   <div class="case-study-header">
     <p class="case-number">05</p>
-    <h3>Model Calibration and System Optimisation</h3>
+    <h3>Calibration &amp; Response Optimisation</h3>
   </div>
   <div class="case-tags" aria-label="Skills and tools used"><span class="case-tag">Calibration Loops</span><span class="case-tag">Correlation Analysis</span><span class="case-tag">Simulation Comparison</span><span class="case-tag">System Optimisation</span></div>
-  <p>Reduced bias and non-linearity in measurement systems through iterative calibration and parameter tuning.</p><ul><li>Analysed variable correlations and system response behaviour.</li><li>Applied transformations, calibration strategies, and simulation comparisons.</li><li>Improved measurement accuracy through repeated refinement loops.</li></ul>
-  <p class="case-meta"><strong>Methods:</strong> correlation analysis, calibration loops, simulation comparison</p>
-  <p class="impact-note"><strong>Impact:</strong> reduced system bias and improved accuracy in non-linear measurement settings.</p>
-  <p class="impact">Industry relevance: system calibration, digital twins, engineering optimisation.</p>
+  <p>Reduced response bias by turning a persistent correlation into an explicit calibration signal.</p><ul><li>Measured how the response parameter <code>a</code> varies with energy instead of assuming a constant response model.</li><li>Used that structure to define a simple rotation-based correction for the normalised response.</li><li>Kept the correction interpretable so behaviour could be validated across detector configurations and operating points.</li></ul>
+  <p class="case-meta"><strong>Methods:</strong> correlation tracking, rotation-based correction, response calibration</p>
+  <p class="impact-note"><strong>Impact:</strong> used interpretable correlations to reduce response bias and stabilise calibrated outputs.</p>
+  <p class="impact">Industry relevance: Calibration Systems | Digital Twins | Engineering Optimisation</p>
   <div class="case-evidence">
   <p class="case-evidence-title">Selected evidence from project work</p>
-  <ul class="case-evidence-list"><li>A clear correlation between the response parameter <code>a</code> and energy was tracked across operating points instead of being treated as noise.</li><li>That trend was then used to define a rotation-based correction for a more stable normalized response.</li></ul>
+  <ul class="case-evidence-list"><li>The <code>E_vs_a.pdf</code> slides isolate the <code>Energy vs a</code> correlation as a named calibration problem, then follow it with a dedicated <code>Rotation</code> correction step.</li><li>The stated correction uses a rotation point at <code>f_em = 1.0</code> and a simple transformed response of the form <code>n_norm + (1 - f_em) * a</code>, making the optimisation logic explicit.</li></ul>
+</div>
+</article>
+<article class="case-study" id="work-6">
+  <div class="case-study-header">
+    <p class="case-number">06</p>
+    <h3>Data Quality Monitoring</h3>
+  </div>
+  <div class="case-tags" aria-label="Skills and tools used"><span class="case-tag">Monitoring</span><span class="case-tag">Data Validation</span><span class="case-tag">Performance Diagnostics</span><span class="case-tag">Root-Cause Analysis</span></div>
+  <p>Built a production-style validation workflow for early Run 3 photon reconstruction, focused on finding actionable detector and software issues.</p><ul><li>Used multiple high- and low-momentum photon channels as benchmark datasets for reconstruction and identification checks.</li><li>Compared MC and data across trigger streams and offline selections to isolate where discrepancies entered the pipeline.</li><li>Traced anomalies back to concrete causes, including problematic ECAL cells, imperfect alignment/calibration, and a missing-HCAL-energy bug later fixed in software.</li></ul>
+  <p class="case-meta"><strong>Methods:</strong> benchmark-channel checks, MC-data comparison, detector-level diagnostics</p>
+  <p class="impact-note"><strong>Impact:</strong> identified reconstruction anomalies and translated them into concrete calibration, alignment, and software follow-ups.</p>
+  <p class="impact">Industry relevance: Production Monitoring | Model Validation | Observability | Quality Assurance</p>
+  <div class="case-evidence">
+  <p class="case-evidence-title">Selected evidence from project work</p>
+  <ul class="case-evidence-list"><li>The Run 3 performance note explicitly uses <code>Bs -&gt; phi gamma</code>, <code>Bd -&gt; K* gamma</code>, and charmonium channels as benchmark datasets for validating photon and <code>pi0</code> performance in early data.</li><li>The study documents concrete findings rather than generic monitoring: an abnormal bump linked to a specific ECAL cell, asymmetries in inner-ECAL photon distributions, and a missing-HCAL-energy issue fixed in <code>Rec v35r18</code>.</li></ul>
+</div>
+</article>
+<article class="case-study" id="work-7">
+  <div class="case-study-header">
+    <p class="case-number">07</p>
+    <h3>Simulation Correction Tooling</h3>
+  </div>
+  <div class="case-tags" aria-label="Skills and tools used"><span class="case-tag">Scientific Software</span><span class="case-tag">Event Filtering</span><span class="case-tag">Simulation Correction</span><span class="case-tag">Framework Integration</span></div>
+  <p>Developed simulation-correction tooling that turns measured physics constraints into an event-level resampling workflow.</p><ul><li>Built a Gaudi-based package under the BOSS framework to correct inclusive <code>D0 Dbar0</code> simulation samples event by event.</li><li>Encoded correction factors from measured inputs into a filtering workflow that keeps or rejects events to match the corrected distribution.</li><li>Designed the package so the correction logic is reusable beyond a single analysis or software stack.</li></ul>
+  <p class="case-meta"><strong>Methods:</strong> Gaudi-package development, event-level correction, framework integration</p>
+  <p class="impact-note"><strong>Impact:</strong> turned theory-driven correction factors into a reusable software package for improving simulation realism.</p>
+  <p class="impact">Industry relevance: Simulation Platforms | Scientific Computing | Data Engineering</p>
+  <div class="case-evidence">
+  <p class="case-evidence-title">Selected evidence from project work</p>
+  <ul class="case-evidence-list"><li>The QCFilter report describes <code>QCMCFilterAlg</code> as a new Gaudi-based package developed to improve <code>D0 Dbar0</code> simulation at BESIII through quantum-coherent correction.</li><li>The event-level logic is explicit: each event receives a correction factor and is kept or discarded by comparing that value to a random number, making the software behaviour auditable and portable.</li></ul>
+</div>
+</article>
+<article class="case-study" id="work-8">
+  <div class="case-study-header">
+    <p class="case-number">08</p>
+    <h3>Fourier-Based Inference for Complex Signals</h3>
+  </div>
+  <div class="case-tags" aria-label="Skills and tools used"><span class="case-tag">Statistical Inference</span><span class="case-tag">Fourier Methods</span><span class="case-tag">Complex-Valued Modelling</span><span class="case-tag">Joint Fitting</span></div>
+  <p>Designed a model-independent inference workflow that uses a Fourier basis to represent structured signal variation and recover latent parameters through weighted fitting.</p><ul><li>Replaced a coarse binned description with an optimal Fourier expansion of signal variation across phase space.</li><li>Constructed weighted observables from heterogeneous datasets and solved for latent parameters through a single joint fit.</li><li>Validated the method with pseudoexperiments, covariance-aware fitting, and higher-order expansion checks to test stability against modelling and truncation effects.</li></ul>
+  <p class="case-meta"><strong>Methods:</strong> Fourier expansion, weighted observables, joint fitting, pseudoexperiment validation</p>
+  <p class="impact-note"><strong>Impact:</strong> transformed a difficult high-dimensional inference problem into a tractable weighted-fit workflow with controlled statistical and systematic behaviour.</p>
+  <p class="impact">Industry relevance: Advanced Analytics | Signal Modelling | Inverse Problems</p>
+  <div class="case-evidence">
+  <p class="case-evidence-title">Selected evidence from project work</p>
+  <ul class="case-evidence-list"><li>The 2026 papers describe the method as a <code>novel approach</code> based on the <code>optimal Fourier method</code>, where the strong-phase difference is expanded in Fourier components and the resulting weighted observables are used in a joint fit.</li><li>The analysis explicitly checks robustness through pseudoexperiments, covariance propagation, systematic variations, and higher-order Fourier expansions, showing that the fitted parameters remain stable as the basis is extended.</li></ul>
 </div>
 </article>
           </div>

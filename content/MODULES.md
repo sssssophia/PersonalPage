@@ -31,12 +31,17 @@ This site is driven by Markdown modules, but `index.html` and `resume.html` are 
 
 - `content/index/skills.md`
   Use one bullet per skill/tool.
+  This file now drives both:
+  - homepage `Skills & Tools`
+  - resume `Skills` section
+  The French resume uses the same source list through a translation map in `scripts/build_site.py`.
 
 - `content/index/overview.md`
   Controls the right-side overview panel and the `Selected Work Map` label.
 
-- `content/index/work-1.md` to `content/index/work-5.md`
+- `content/index/work-*.md`
   One file per case study.
+  Any number of `work-*.md` files can be used; they are rendered in numeric order.
   Required front matter:
   - `number`
   - `title`
@@ -46,9 +51,11 @@ This site is driven by Markdown modules, but `index.html` and `resume.html` are 
   - `industry`
   Optional:
   - `evidence_title`
+  - `homepage: false` to keep a work file in the repo but hide it from the homepage
   Body structure:
   - short intro paragraph
   - bullet list
+  - optional standalone Markdown image lines such as `![Alt text](assets/example.png)` or `![Alt text](assets/example.png "Caption")`
   - optional `## Evidence` section with bullets
 
 - `content/index/positioning.md`
@@ -66,6 +73,7 @@ Files:
 - `summary.md`
 - `education.md`
 - `skills.md`
+  Currently not used for rendering. Resume skills are generated from `content/index/skills.md`.
 - `languages.md`
 - `highlights.md`
 - `experience.md`

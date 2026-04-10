@@ -1,18 +1,18 @@
 ---
 number: 05
-title: Model Calibration and System Optimisation
+title: Calibration & Response Optimisation
 tags: Calibration Loops | Correlation Analysis | Simulation Comparison | System Optimisation
-methods: correlation analysis, calibration loops, simulation comparison
-impact: reduced system bias and improved accuracy in non-linear measurement settings.
-industry: system calibration, digital twins, engineering optimisation.
+methods: correlation tracking, rotation-based correction, response calibration
+impact: used interpretable correlations to reduce response bias and stabilise calibrated outputs.
+industry: Calibration Systems | Digital Twins | Engineering Optimisation
 evidence_title: Selected evidence from project work
 ---
-Reduced bias and non-linearity in measurement systems through iterative calibration and parameter tuning.
+Reduced response bias by turning a persistent correlation into an explicit calibration signal.
 
-- Analysed variable correlations and system response behaviour.
-- Applied transformations, calibration strategies, and simulation comparisons.
-- Improved measurement accuracy through repeated refinement loops.
+- Measured how the response parameter `a` varies with energy instead of assuming a constant response model.
+- Used that structure to define a simple rotation-based correction for the normalised response.
+- Kept the correction interpretable so behaviour could be validated across detector configurations and operating points.
 
 ## Evidence
-- A clear correlation between the response parameter `a` and energy was tracked across operating points instead of being treated as noise.
-- That trend was then used to define a rotation-based correction for a more stable normalized response.
+- The `E_vs_a.pdf` slides isolate the `Energy vs a` correlation as a named calibration problem, then follow it with a dedicated `Rotation` correction step.
+- The stated correction uses a rotation point at `f_em = 1.0` and a simple transformed response of the form `n_norm + (1 - f_em) * a`, making the optimisation logic explicit.

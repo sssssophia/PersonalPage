@@ -1,18 +1,18 @@
 ---
 number: 02
-title: Time-Series Modelling with Bias Correction
+title: Time-Series Inference
 tags: Time-Series Modelling | Bias Correction | Calibration | Joint Fitting
-methods: time-dependent modelling, calibration, joint fitting
-impact: increased parameter stability and reduced systematic uncertainty across datasets.
-industry: retention modelling, churn analysis, causal inference.
+methods: decay-time acceptance modelling, resolution calibration, simultaneous fitting
+impact: improved time-dependent inference by separating acceptance, resolution, and calibration effects across datasets.
+industry: Retention Analytics | Churn Modelling | Causal Inference
 evidence_title: Selected evidence from project work
 ---
-Inferred latent dynamics from noisy temporal data affected by measurement resolution and selection bias.
+Built a time-series inference workflow for data affected by selection effects, detector resolution, and sample mismatch.
 
-- Built time-dependent probabilistic models across multiple datasets.
-- Corrected for resolution effects, acceptance bias, and noise dilution.
-- Used calibration samples and control datasets to reduce systematic error.
+- Modelled acceptance and resolution explicitly instead of absorbing reconstruction effects into a single nuisance term.
+- Estimated Run 1 and Run 2 corrections separately to avoid over-sharing assumptions across datasets.
+- Calibrated the effective time resolution with control samples and propagated residual mismodelling as systematic uncertainty.
 
 ## Evidence
-- Run 1 and Run 2 proper-time acceptance curves were modelled separately rather than assuming a single shared temporal response.
-- Control-channel data, MC acceptance ratios, and GB-reweighting were combined to reduce bias in time-dependent inference.
+- The note states that signal and control samples were matched by GB reweighting before building the acceptance correction, rather than assuming raw MC agreement.
+- Acceptance extraction combined `B0` data, `B0/Bs0` MC ratios, and a simultaneous fit; Run 1 and Run 2 were treated separately to avoid over-sharing detector response assumptions.
